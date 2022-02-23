@@ -8,33 +8,20 @@
       "filename": "./../../intro/intro-job-system-automation.md"
     },
     {
-      "title": "Get Started",
-      "description": "Get a Free Trial",
-      "filename": "https://raw.githubusercontent.com/oracle/learning-library/master/common/labs/cloud-login/pre-register-free-tier-account.md"
+      "title": "Get Started with noVNC Remote Desktop",
+      "description": "Using noVNC Remote Desktop",
+      "filename": "https://raw.githubusercontent.com/oracle/learning-library/master/common/labs/remote-desktop-old/using-novnc-remote-desktop.md"
     },
     {
-      "title": "Lab 1: Prepare Setup",
-      "description": "How to download your ORM stack and update security rules for an existing VCN",
-      "publisheddate": "09/28/2020",
-      "filename": "../../prepare-setup/prepare-setup.md",
-      "type": "job-system-automation"
-    },
-    {
-      "title": "Lab 2: Environment Setup",
-      "description": "How to provision the workshop environment and connect to it",
-      "publisheddate": "06/30/2020",
-      "filename": "https://raw.githubusercontent.com/oracle/learning-library/master/common/labs/setup-compute-generic/setup-compute-novnc.md"
-    },
-    {
-      "title": "Lab 3: Initialize Environment",
+      "title": "Lab 1: Initialize Environment",
       "description": "How to initialize and start all the workshop components",
       "publisheddate": "10/14/2020",
-      "filename": "../../initialize-environment/initialize-environment.md"
+      "filename": "./../../initialize-environment/initialize-environment.md"
     },
     {
-      "title": "Lab 4: Job System Automation",
+      "title": "Lab 2: Job System Automation",
       "description": "This lab provides an overview of the Enterprise Manager Job System and how to use it to automate routine administrative tasks such as backup, SQL scripts, OS jobs etc.",
-      "publisheddate": "6/15/2020",
+      "publisheddate": "6/15/2021",
       "filename": "./../../em-job-system-automation/em-job-system-automation.md"
     },
     {
@@ -46,7 +33,7 @@
     {
       "title": "Need Help?",
       "description": "Solutions to Common Problems and Directions for Receiving Live Help",
-      "filename": "https://raw.githubusercontent.com/oracle/learning-library/master/common/labs/need-help/need-help-freetier.md"
+      "filename": "https://raw.githubusercontent.com/oracle/learning-library/master/common/labs/need-help/need-help-livelabs.md"
     }
   ]
 }

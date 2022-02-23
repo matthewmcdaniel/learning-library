@@ -1,17 +1,17 @@
 {
-    "workshoptitle": "How to add autocomplete for OCI CLI?",
+    "workshoptitle": "How to add autocomplete for OCI CL?",
     "help": "livelabs-help-oci_us@oracle.com",
     "tutorials": [
         {
-            "title": "How to add autocomplete for OCI CLI?",
+            "title": "How to add autocomplete for OCI CL?",
             "description": "",
             "filename": "sprint-autocomplete-for-ocicl.md"
         },
         {
-            "title": " How can I access Oracle Cloud via command line??",
+            "title": "How to install OCI CL?",
             "description": "",
             "filename": "../sprint-install-ocicl/sprint-install-ocicl.md"
         }
-
+    
     ]
 }
