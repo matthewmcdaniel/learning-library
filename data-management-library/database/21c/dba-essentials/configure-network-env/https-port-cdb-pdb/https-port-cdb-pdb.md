@@ -8,7 +8,7 @@ When you create a CDB, Oracle Database Configuration Assistant (Oracle DBCA) aut
 
 Estimated Time: 15 minutes
 
-> **Note:** While connecting to Oracle Database, you do not require a password in the following scenarios.
+**Note:** While connecting to Oracle Database, you do not require a password in the following scenarios.
  - The Oracle Database resides on the localhost.
  - The current user (for this lab, it is *oracle* user) is a member of the OSDBA group.
 
@@ -34,28 +34,26 @@ To connect to Oracle Database and run SQL commands, set the environment first.
 	$ <copy>. oraenv</copy>
 	```
 
-1. Enter the Oracle SID, for this lab it is *CDB1*.
+1. Enter the Oracle SID *orcl*.
 
 	```
-	ORACLE_SID = [oracle] ? <copy>CDB1</copy>
-	The Oracle base has been set to /opt/oracle
+	ORACLE_SID = [oracle] ? <copy>orcl</copy>
+	The Oracle base has been set to /u01/app/oracle
 	```
 
-	This command also sets the Oracle home path to `/opt/oracle/product/21c/dbhome_1`.
-
-	> **Note:** Oracle SID is case sensitive.  
+	This command also sets the Oracle home path to `/u01/app/oracle/product/21.0.0/dbhome_1`.
 
 1. Change the current working directory to `$ORACLE_HOME/bin`. 
 
 	```
-	$ <copy>cd /opt/oracle/product/21c/dbhome_1/bin</copy>
+	$ <copy>cd /u01/app/oracle/product/21.0.0/dbhome_1/bin</copy>
 	```
 
 You have set the environment variables for the active terminal session. You can now connect to Oracle Database and run the commands.
 
 > **Note:** Every time you open a new terminal window, you must set the environment variables to connect to Oracle Database from that terminal. Environment variables from one terminal do not apply automatically to other terminals.
 
-Alternatively, you may run the script file `.set-env-db.sh` from the home location and enter the number for `ORACLE_SID`. It sets the environment variables automatically. 
+Alternatively, you may run the script file `.set-env-db.sh` from the home location and enter the number for `ORACLE_SID`, for example, *3* for `orcl`. It sets the environment variables automatically. 
 
 ## Task 2: View the Dispatcher Configuration
 
@@ -66,20 +64,16 @@ A dispatcher starts automatically on the TCP/IP protocol. Log in to Oracle Datab
 	```
 	$ <copy>./sqlplus / as sysdba</copy>
 	```
-
-	The values may differ depending on the system you are using.
-
 	```
-	SQL*Plus: Release 21.0.0.0.0 - Production on Thu Feb 17 13:36:39 2022
-	Version 21.4.0.0.0
+	SQL*Plus: Release 21.0.0.0.0 - Production on Mon Jun 15 16:23:10 2021
+	Version 21.3.0.0.0
 
 	Copyright (c) 1982, 2021, Oracle.  All rights reserved.
 
-
 	Connected to:
 	Oracle Database 21c Enterprise Edition Release 21.0.0.0.0 - Production
-	Version 21.4.0.0.0
-
+	Version 21.3.0.0.0
+    
     SQL>
 	```
 
@@ -88,23 +82,19 @@ A dispatcher starts automatically on the TCP/IP protocol. Log in to Oracle Datab
 	```
 	SQL> <copy>show parameter dispatchers</copy>
 	```
-
-	The values may differ depending on the system you are using.
-
 	```
-	NAME				     	TYPE	 	VALUE
-	--------------------------- ----------- ------------------------------
-	dispatchers			     	string	 	(PROTOCOL=TCP) (SERVICE=CDB1XD
-											B)
-	enable_dnfs_dispatcher		boolean	 	FALSE
-	max_dispatchers 		    integer
+	NAME                  TYPE        VALUE
+	--------------------- ----------- ------------------------------
+	dispatchers           string      (PROTOCOL=TCP) (SERVICE=orclXD
+									  B)
+	max_dispatchers       integer
 	```
 
 	Verify that it includes the `PROTOCOL=TCP` attribute.
 
 ## Task 3: Set the HTTPS Port for CDB
 
-The default port for CDB is `5500`. For this lab, change the port to, say, *5506*.
+The default port for CDB is `5500`. For this lab, change the port to, say, *5501*.
 
 1. 	Verify that the container shows the CDB name, *CDB$ROOT*.
 
@@ -122,19 +112,16 @@ The default port for CDB is `5500`. For this lab, change the port to, say, *5506
 	```
 	SQL> <copy>select dbms_xdb_config.gethttpsport() from dual;</copy>
 	```
-
-	The values may differ depending on the system you are using.
-
 	```
 	DBMS_XDB_CONFIG.GETHTTPSPORT()
 	------------------------------
-							  5501
+							  5500
 	```
 
-3. Change the HTTPS port number of CDB to *5506*.
+3. Change the HTTPS port number of CDB to *5501*.
 
 	```
-	SQL> <copy>exec DBMS_XDB_CONFIG.SETHTTPSPORT(5506);</copy>
+	SQL> <copy>exec DBMS_XDB_CONFIG.SETHTTPSPORT(5501);</copy>
 
 	PL/SQL procedure successfully completed.
 	```
@@ -147,34 +134,31 @@ The default port for CDB is `5500`. For this lab, change the port to, say, *5506
 	```
 	DBMS_XDB_CONFIG.GETHTTPSPORT()
 	------------------------------
-							  5506
+							  5501
 	```
 
 You have modified the port number for CDB successfully.  
 
 ## Task 4: Set the HTTPS Port for PDB
 
-The default port for PDB is `0`. For this lab, change the port to, say, *5507*.
+The default port for PDB is `0`. For this lab, change the port to, say, *5502*.
 
 1. View the existing PDBs in your Oracle Database.
 
 	```
 	SQL> <copy>show pdbs</copy>
 	```
-	The values may differ depending on the system you are using.
-	
 	```
-		CON_ID CON_NAME			  			  OPEN MODE  RESTRICTED
-	---------- ------------------------------ ---------- ----------
-			 2 PDB$SEED			  		   READ ONLY  NO
-			 3 PDB1 			  			  READ WRITE NO
-
+		CON_ID NAME                      OPEN_MODE
+	---------- ------------------------- ----------
+			 2 PDB$SEED                  READ ONLY
+			 3 ORCLPDB                   READ WRITE
 	```
 
-2. Change the container to PDB, for this lab it is *PDB1*.
+2. Change the container to the PDB, for this lab it is *orclpdb*.
 
 	```
-	SQL> <copy>alter session set container=PDB1;</copy>
+	SQL> <copy>alter session set container=orclpdb;</copy>
 
 	Session altered.
 	```
@@ -184,43 +168,37 @@ The default port for PDB is `0`. For this lab, change the port to, say, *5507*.
 	```
 	SQL> <copy>show con_name</copy>
 	```
-
-	The values may differ depending on the system you are using.
-
 	```
 	CON_NAME
 	------------------------------
-	PDB1
+	ORCLPDB
 	```
 
 	Open the PDB, if not already open.
 
 	```
-	SQL> <copy>alter pluggable database PDB1 open;</copy>
+	SQL> <copy>alter pluggable database orclpdb open;</copy>
 
 	Pluggable database altered.
 	```
 
-	> **Note:** If the PDB is in `open` state, the above command returns an error message that the PDB is already open. 
+	**Note:** If the PDB is in `open` state, the above command returns an error message that the PDB is already open. 
 
 5. View the current port number of PDB.
 
 	```
 	SQL> <copy>select dbms_xdb_config.gethttpsport() from dual;</copy>
 	```
-
-	The values may differ depending on the system you are using.
-
 	```
 	DBMS_XDB_CONFIG.GETHTTPSPORT()
 	------------------------------
 								 0
 	```
 
-6. Change the HTTPS port number of PDB to *5507*.
+6. Change the HTTPS port number of PDB to *5502*.
 
 	```
-	SQL> <copy>exec DBMS_XDB_CONFIG.SETHTTPSPORT(5507);</copy>
+	SQL> <copy>exec DBMS_XDB_CONFIG.SETHTTPSPORT(5502);</copy>
 
 	PL/SQL procedure successfully completed.
 	```
@@ -233,7 +211,7 @@ The default port for PDB is `0`. For this lab, change the port to, say, *5507*.
 	```
 	DBMS_XDB_CONFIG.GETHTTPSPORT()
 	------------------------------
-							  5507
+							  5502
 	```
 
 You have modified the port number for PDB successfully. You can close from the SQL prompt with the `EXIT` command.
@@ -248,7 +226,7 @@ You may now **proceed to the next lab**.
 
 - **Contributors**: Suresh Rajan, Prakash Jashnani, Malai Stalin, Subhash Chandra, Dharma Sirnapalli, Subrahmanyam Kodavaluru, Manisha Mati
 
-- **Last Updated By/Date**: Manish Garodia, February 2022
+- **Last Updated By/Date**: Manish Garodia, January 2022
 
 
  

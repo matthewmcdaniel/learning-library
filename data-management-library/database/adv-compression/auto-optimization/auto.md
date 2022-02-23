@@ -1,4 +1,4 @@
-# Automatic data optimization
+# Automatic Data Optimization
 
 ## Introduction
 
@@ -6,9 +6,9 @@ The massive growth in data volume experienced by enterprises introduces signific
 
 Estimated Time: 20 minutes
 
-### About automatic data optimization
+### About Automatic Data Optimization
 
-Automatic data optimization allows organizations to create policies that implement data compression and storage tiering automatically. ADO policies define conditions and corresponding actions to be applied to specific objects. Utilizing the information maintained by Heat Map, Oracle Database executes the registered ADO actions, for the requested objects, to move them to the desired state transparently and automatically.
+Automatic Data Optimization (ADO) allows organizations to create policies that implement data compression and storage tiering automatically. ADO policies define conditions and corresponding actions to be applied to specific objects. Utilizing the information maintained by Heat Map, Oracle Database executes the registered ADO actions, for the requested objects, to move them to the desired state transparently and automatically.
 
 ### Key Features 
 
@@ -23,7 +23,7 @@ This Lab will teach you how to enable Automatic Data Optimization.
 ### Objectives
  
 In this lab, you will:
-* Enable automatic data optimization
+* Enable Automatic Data Optimization
 
 ### Prerequisites 
 This lab assumes you have:
@@ -33,7 +33,7 @@ This lab assumes you have:
 * Successfully logged into your LiveLabs account
 * A Valid SSH Key Pair
   
-## Task 1: Enable automatic data optimization
+## Task 1: Enable Automatic Data Optimization
 
 1.  Create table students 
 
@@ -69,7 +69,7 @@ This lab assumes you have:
     </copy>
     ```
 
-    ![User ILM Policies](images/user-ilmpolicies.png "User ILM Policies")
+    ![Image alt text](images/user-ilmpolicies.png "User ILM Policies")
 
  
 ## Task 2: Cleanup
@@ -86,8 +86,8 @@ This lab assumes you have:
  
 ## Learn More
 
-* [Row compression](https://livesql.oracle.com/apex/livesql/file/content_D84SJGGDXB1SW4HKXVX6BK7N9.html) 
-* [Oracle advanced compression](https://www.oracle.com/technetwork/database/options/compression/advanced-compression-wp-12c-1896128.pdf) 
+* [Row Compression](https://livesql.oracle.com/apex/livesql/file/content_D84SJGGDXB1SW4HKXVX6BK7N9.html) 
+* [Oracle Advanced Compression](https://www.oracle.com/technetwork/database/options/compression/advanced-compression-wp-12c-1896128.pdf) 
  
 ## Acknowledgements
 
